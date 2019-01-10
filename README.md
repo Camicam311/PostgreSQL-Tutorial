@@ -130,7 +130,7 @@ As you can see, only the id values 2 and 3 are in the resulting table since thos
 
 For LEFT and RIGHT joins, it matters which tables you specify first in your query. The first table you write would be considered the left table and the second the right table.
 
-For a **LEFT JOIN**, if the specified column of the right table does not have a matching value in the left table, then the added columns of the right table will have NULL values for those non-matching values. The syntax of the `LEFT JOIN` is similar to an `INNER JOIN` and the output is shown below.
+For a **LEFT JOIN**, if the specified column of the right table does not have a matching value in the left table, then the added columns of the right table will have `NULL values` for those non-matching values. The syntax of the `LEFT JOIN` is similar to an `INNER JOIN`.
 
 ```
 SELECT *
@@ -162,7 +162,7 @@ A **FULL JOIN** will show the outputs of both the `LEFT JOIN` and `RIGHT JOIN`. 
 SELECT *
 FROM table1
 FULL JOIN table2
-USING (id)
+USING (id);
 ```
 
 ![full](join_images/full.PNG)
@@ -172,7 +172,7 @@ With a **CROSS JOIN**, for every row of the first table you will get all the val
 ```
 SELECT *
 FROM table1
-CROSS JOIN table2
+CROSS JOIN table2;
 ```
 ![cross](join_images/cross.PNG)
 
@@ -233,7 +233,7 @@ USING (student_id);
 
 ![q11.1](query_images/q11.1.PNG)
 
-In addition to the query above, we also joined `houses` and used `WHERE` to find the Slytherins who are not purebloods. We find that there are two half blood Slytherins and two Slytherins whose bloodtype is unknown. Note that `!=` means "does not equal" and we use parenthesis carefully around the `OR` statement to differentiate it from the `AND`.
+In addition to the query above, we also joined `houses` and used `WHERE` to find the Slytherins who are not purebloods. We find that there are two half blood Slytherins and two Slytherins whose bloodtype is unknown. Note that `!=` means "does not equal" and we use parenthesis carefully around `OR` to separate the first blood_type condition from the `AND` operator.
 
 ```
 -- are all Slytherins purebloods? --
@@ -294,7 +294,7 @@ WHERE num_years >
 ```
 ![q13](query_images/q13.PNG)
 
-The **UNION** clause will combine two `SELECT` statements into one table (imagine two tables stack on top of each other). Note that the number of columns and datatypes of each column must match between tables. We can use UNION to combine `dums_army` and `inquisitorial_squad` since they both contain the columns `student_id` and `house_id`. Part of the query result is shown below.
+The **UNION** clause will combine two `SELECT` statements into one table (imagine two tables stack on top of each other). Note that the number of columns and datatypes of each column must match between tables. We can use `UNION` to combine `dums_army` and `inquisitorial_squad` since they both contain the columns `student_id` and `house_id`. Part of the query result is shown below.
 
 ```
 SELECT *
@@ -321,7 +321,7 @@ WHERE student_id NOT IN
 
 **EXCEPT** will keep all the rows in the first `SELECT` statement that are not in the second `SELECT` statement. In this example, the first statement results in all the classes that Harry (who has student id of 1) took and the second statement results in all the classes Hermione (who has student id of 3) took. Using `EXCEPT`, we can find which class Harry is taking that Hermione isn't, which is Divination. Remember-Hermione dropped Divination in her third year!
 ```
--- which class is Harry taking but Hermione isn't? --
+-- which class is Harry taking but Hermione isn't?--
 SELECT class_id, class_name
 FROM classes
 INNER JOIN enrollment
@@ -352,7 +352,7 @@ FROM houses;
 ```
 ![q16](query_images/q16.PNG)
 
-Lastly, we will look at a subquery in the `FROM` clause. The subquery below counts the number of students are in each class (by `class_id`) and it is aliased as `subquery`. We can use this alias to get its fields, as seen when we write `subquery.num_students` to get the number of students of each class in the `SELECT` clause. We also write `class_name` in the `SELECT` clause to get that column from `classes` and we match the `class_id` columns of `classes` and the subquery in the `WHERE` clause.
+Lastly, we will look at a subquery in the `FROM` clause. The subquery below counts the number of students that are in each class (by `class_id`) and it is aliased as `subquery`. We can use this alias to get its fields, as seen when we write `subquery.num_students` to get the number of students of each class in the `SELECT` clause. We also write `class_name` in the `SELECT` clause to get that column from `classes` and we match the `class_id` columns of `classes` and the subquery in the `WHERE` clause.
 
 ```
 -- how many students are enrolled in each class? --
@@ -374,5 +374,5 @@ I used the following resources to help me write this tutorial:
 
 - **DataCamp's Intro to SQL for Data Science** https://www.datacamp.com/courses/intro-to-sql-for-data-science
 - **DataCamp's Joining Data in PostgreSQL** https://www.datacamp.com/courses/joining-data-in-postgresql
-- **Tutorialpoint's PostGreSQL Tuturial ** https://www.tutorialspoint.com/postgresql/postgresql_expressions.htm
+- **Tutorialpoint's PostGreSQL Tuturial** https://www.tutorialspoint.com/postgresql/postgresql_expressions.htm
 - **PostgreSQL Tutorial website** http://www.postgresqltutorial.com/
