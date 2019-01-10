@@ -112,7 +112,7 @@ INNER JOIN houses
 USING (house_id)
 WHERE house_name = 'Slytherin' AND
 	(blood_type != 'pure' 
-	OR blood_type ISNULL)
+	OR blood_type ISNULL);
 
 -- equivalent--
 SELECT first_name, blood_type, house_name
@@ -169,7 +169,7 @@ SELECT class_id, class_name
 FROM classes
 INNER JOIN enrollment
 USING (class_id)
-WHERE student_id = 3
+WHERE student_id = 3;
 
 -- how many students are in each house? --
 SELECT house_name,
